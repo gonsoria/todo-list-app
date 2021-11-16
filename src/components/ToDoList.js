@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDo from './ToDo';
 
-function ToDoList({ toDos }) {
+function ToDoList({ toDos, toDoDelete, toDoComplete, }) {
     return (
         <div>
             <h2>Tareas</h2>
@@ -10,6 +10,8 @@ function ToDoList({ toDos }) {
                 <ToDo 
                     key={todo.id}
                     todo={todo}
+                    toDoDelete={toDoDelete}
+                    toDoComplete={toDoComplete}
                 />)
             }
             

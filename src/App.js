@@ -21,16 +21,45 @@ const initialToDos =[
 function App() {
     const [toDos, setToDos] = useState(initialToDos)
 
+    const toDoDelete = (toDoId) => {
+        const changedToDos = toDos.filter( todo => toDoId !== todo.id )
+        setToDos(changedToDos)
+    }
+
+    const toDoComplete = (toDosId) => {
+        const changedToDos = toDos.map(todo => toDosId === todo.id ? {...todo, completed: !todo.completed} : todo) 
+
+        setToDos(changedToDos)
+    }
+
+    const toDoAdd = (todo) => {
+        const newToDo = {
+            ...todo,
+            completed: false,
+            id:Date.now()
+        }
+        const changedToDos = [
+            newToDo,
+            ...toDos
+        ]        
+        setToDos(changedToDos)
+    }
+
+ 
     return (
         <div>
             <h1>Lista de tareas.</h1>
             <div>
                 <ToDoList
                     toDos={toDos}
+                    toDoDelete={toDoDelete}
+                    toDoComplete={toDoComplete}
                 />
             </div>
             <div>
-                <ToDoForm />
+                <ToDoForm 
+                    toDoAdd={toDoAdd}
+                />
             </div>
         </div>
     )

@@ -1,13 +1,17 @@
 import React from 'react'
 
-function ToDo({ todo }) {
+function ToDo({ todo, toDoDelete, toDoComplete,  }) {
     return (
         <div>
             <h3>{todo.title}</h3>
-            <button>Terminado</button>            
+            <button
+                onClick={() => toDoComplete(todo.id)}
+            >Terminado</button>            
             <p>{todo.description}</p>
             <button>Editar</button>            
-            <button>Eliminar</button>
+            <button
+                onClick={() => toDoDelete(todo.id)}
+            >Eliminar</button>
             <hr/>        
         </div>
     )
