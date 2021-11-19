@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ToDo({ todo, toDoDelete, toDoComplete,  }) {
+function ToDo({ todo, toDoDelete, toDoComplete, setEdit }) {
     return (
         <div>
             <h3>{todo.title}</h3>
@@ -8,7 +8,9 @@ function ToDo({ todo, toDoDelete, toDoComplete,  }) {
                 onClick={() => toDoComplete(todo.id)}
             >Terminado</button>            
             <p>{todo.description}</p>
-            <button>Editar</button>            
+            <button
+                onClick={() => (setEdit(todo))}
+            >Editar</button>            
             <button
                 onClick={() => toDoDelete(todo.id)}
             >Eliminar</button>

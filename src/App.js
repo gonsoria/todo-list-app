@@ -20,6 +20,7 @@ const initialToDos =[
 
 function App() {
     const [toDos, setToDos] = useState(initialToDos)
+    const [toDoEdit,setEdit] = useState(null)
 
     const toDoDelete = (toDoId) => {
         const changedToDos = toDos.filter( todo => toDoId !== todo.id )
@@ -45,7 +46,7 @@ function App() {
         setToDos(changedToDos)
     }
 
- 
+
     return (
         <div>
             <h1>Lista de tareas.</h1>
@@ -54,11 +55,13 @@ function App() {
                     toDos={toDos}
                     toDoDelete={toDoDelete}
                     toDoComplete={toDoComplete}
+                    setEdit={setEdit}
                 />
             </div>
             <div>
                 <ToDoForm 
                     toDoAdd={toDoAdd}
+                    toDoEdit={toDoEdit}
                 />
             </div>
         </div>

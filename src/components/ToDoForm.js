@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect } from 'react'
 
 const initialFormValue = {
     title:'',
-    description:''
+    description:'',
 }
 
-function ToDoForm({ toDoAdd }) {
+function ToDoForm({ toDoAdd, toDoEdit }) {
 
     const [formValue, setFormValue] = useState(initialFormValue)
     const {title,description} = formValue;
     const [error, setError] = useState(null)  // estado de error para campos vacios
+
+    useEffect(() => {
+            // console.log('click en editar')
+            toDoEdit && setFormValue(toDoEdit)
+        }
+        ,[toDoEdit])
+
 
     const handleOnChange = (e) => {
         const changedFormValue = {
@@ -28,12 +35,14 @@ function ToDoForm({ toDoAdd }) {
         if(description.trim() === ''){
             setError('La descripcion esta vacia')
             return;
+        } else{
+            setError(null)
+            toDoAdd(formValue)
+            setFormValue(initialFormValue)
         }
-        setError(null)
-        toDoAdd(formValue)
-        setFormValue(initialFormValue)
-
     }
+
+
 
     return (
         <div>

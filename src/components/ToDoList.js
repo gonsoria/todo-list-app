@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDo from './ToDo';
 
-function ToDoList({ toDos, toDoDelete, toDoComplete, }) {
+function ToDoList({ toDos, toDoDelete, toDoComplete, setEdit }) {
     return (
         <div>
             <h2>Tareas</h2>
@@ -12,6 +12,7 @@ function ToDoList({ toDos, toDoDelete, toDoComplete, }) {
                     todo={todo}
                     toDoDelete={toDoDelete}
                     toDoComplete={toDoComplete}
+                    setEdit={setEdit}
                 />)
             }
             
