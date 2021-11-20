@@ -1,26 +1,21 @@
-import React ,{ useState } from 'react'
+import React ,{ useState, useEffect } from 'react'
 import ToDoList from './components/ToDoList'
 import ToDoForm from './components/ToDoForm'
 
 
-const initialToDos =[
-    {
-        title:'Tarea 1',
-        description: 'Descripcion tarea 1',
-        completed: false,
-        id: 1
-    },
-    {
-        title:'Tarea 2',
-        description: 'Descripcion tarea 2',
-        completed: false,
-        id: 2
-    }
-]
+// const initialToDos =[
+//     {
+//         title:'',
+//         description: '',
+//         completed: false,
+//         id:''
+//     }
+// ]
 
 function App() {
-    const [toDos, setToDos] = useState(initialToDos)
+    const [toDos, setToDos] = useState([])
     const [toDoEdit,setEdit] = useState(null)
+
 
     const toDoDelete = (toDoId) => {
         const changedToDos = toDos.filter( todo => toDoId !== todo.id )
@@ -46,6 +41,11 @@ function App() {
         setToDos(changedToDos)
     }
 
+    const modifyToDo = (toDoEdit) => {
+        const changedToDo = toDos.map(todo => todo.id === toDoEdit.id ? toDoEdit : todo)
+        setToDos(changedToDo)
+    }
+
 
     return (
         <div>
@@ -62,6 +62,8 @@ function App() {
                 <ToDoForm 
                     toDoAdd={toDoAdd}
                     toDoEdit={toDoEdit}
+                    modifyToDo={modifyToDo}
+                    setEdit={setEdit}
                 />
             </div>
         </div>

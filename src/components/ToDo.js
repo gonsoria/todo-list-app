@@ -6,7 +6,9 @@ function ToDo({ todo, toDoDelete, toDoComplete, setEdit }) {
             <h3>{todo.title}</h3>
             <button
                 onClick={() => toDoComplete(todo.id)}
-            >Terminado</button>            
+            >{
+                todo.completed === false ? 'Terminado' : 'Terminar'
+            }</button>            
             <p>{todo.description}</p>
             <button
                 onClick={() => (setEdit(todo))}
@@ -14,7 +16,6 @@ function ToDo({ todo, toDoDelete, toDoComplete, setEdit }) {
             <button
                 onClick={() => toDoDelete(todo.id)}
             >Eliminar</button>
-            <hr/>        
         </div>
     )
 }

@@ -5,7 +5,7 @@ const initialFormValue = {
     description:'',
 }
 
-function ToDoForm({ toDoAdd, toDoEdit }) {
+function ToDoForm({ toDoAdd, toDoEdit, modifyToDo,setEdit}) {
 
     const [formValue, setFormValue] = useState(initialFormValue)
     const {title,description} = formValue;
@@ -35,18 +35,26 @@ function ToDoForm({ toDoAdd, toDoEdit }) {
         if(description.trim() === ''){
             setError('La descripcion esta vacia')
             return;
-        } else{
+        }
+        if(toDoEdit){
+            modifyToDo(formValue)
+        }
+        else{
             setError(null)
             toDoAdd(formValue)
             setFormValue(initialFormValue)
         }
+        setFormValue(initialFormValue)
+        setEdit(null)
     }
 
 
 
-    return (
+    return ( 
         <div>
-            <h2>Nueva Tarea</h2>
+            {
+                toDoEdit ? (<h2>Editar Tarea</h2>) : (<h2>Nueva Tarea</h2>) 
+            }
             <form onSubmit={handleSubmit}>
                 <input
                     type='text' 
@@ -61,7 +69,11 @@ function ToDoForm({ toDoAdd, toDoEdit }) {
                     value={description}
                     onChange={handleOnChange}
                 ></textarea>
-                <button>Agregar</button>            
+                <br/>
+                <button>{
+                        toDoEdit ? 'Actualizar' : 'Agregar' 
+                    }
+                </button>            
             </form>
             {
                 error ? (<div>{error}</div>) : null 
