@@ -1,0 +1,70 @@
+.todoContainer{
+    /* border: 1px solid black; */
+    padding: 5px 3px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    font-family: 'PT Serif', serif;
+}
+.todoButtons{
+    display: flex;
+    justify-content: flex-end;
+    background: none;
+}
+.todoButtons button{
+    padding: 3px 5px;
+    margin-left: 3px;
+    border-radius: 5px;
+}
+
+.nonCompleteButton{
+    border-style: solid;
+    border-width: 1px;
+    background: none;
+    color: #4CAF50;
+    border-color:#4CAF50;
+}
+.completedButton{
+    border: none;
+    color: white;
+    background:#4CAF50;
+
+}
+.editButton{
+    border: none;
+    color: white;
+    background: rgba(0, 0, 0, 0.562);
+}
+.deleteButton{
+    color: white;
+    border:none;
+    background: #B32D00;
+}
+.description{
+    font-family: 'PT Serif', serif;
+    font-style: normal;
+    font-size: 0.8em;
+    padding: 3px;
+}
+
+.deleteMessage{   
+    display: flex;    
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.562);
+    border-radius: 5px;
+}
+.deleteMessage h4{
+    font-size: 0.9em;
+}
+.deleteMessage button{
+    padding-left: 5px;
+    font-size: 1.7em;
+    background: none;
+    border: none;
+}
+
+.deleteOk{
+    color:#4CAF50 ;
+}
+.noDelete{
+    color:#B32D00;
+}

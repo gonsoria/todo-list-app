@@ -1,4 +1,5 @@
 import React, { useState ,useEffect } from 'react'
+import styles from '../styles/ToDoForm.module.css'
 
 const initialFormValue = {
     title:'',
@@ -10,14 +11,15 @@ function ToDoForm({ toDoAdd, toDoEdit, modifyToDo,setEdit}) {
     const [formValue, setFormValue] = useState(initialFormValue)
     const {title,description} = formValue;
     const [error, setError] = useState(null)  // estado de error para campos vacios
-
+    
     useEffect(() => {
-            // console.log('click en editar')
-            toDoEdit && setFormValue(toDoEdit)
-        }
-        ,[toDoEdit])
+        // console.log('click en editar')
+        toDoEdit && setFormValue(toDoEdit)
+    }
+    ,[toDoEdit])
 
 
+       
     const handleOnChange = (e) => {
         const changedFormValue = {
             ...formValue,
@@ -26,14 +28,16 @@ function ToDoForm({ toDoAdd, toDoEdit, modifyToDo,setEdit}) {
         setFormValue(changedFormValue)
     }
 
+
+    
     const handleSubmit = (e) => {
         e.preventDefault() 
         if(title.trim() === ''){          //el .trim() elimina los espacios en blanco.
-            setError('El campo de titulo esta vacio')
+            setError('Title is empty')
             return;
         }
         if(description.trim() === ''){
-            setError('La descripcion esta vacia')
+            setError('Description is empty')
             return;
         }
         if(toDoEdit){
@@ -48,35 +52,42 @@ function ToDoForm({ toDoAdd, toDoEdit, modifyToDo,setEdit}) {
         setEdit(null)
     }
 
+    const handleClear = (e) => {
+        e.preventDefault()
+        setFormValue(initialFormValue)
+        setError(null)
+        setEdit(null)
+    }
 
 
     return ( 
-        <div>
-            {
-                toDoEdit ? (<h2>Editar Tarea</h2>) : (<h2>Nueva Tarea</h2>) 
-            }
-            <form onSubmit={handleSubmit}>
+        <div>            
+            <h3 className={styles.formTitle}>{ toDoEdit ? 'Edit  toDo' : 'New toDo'}</h3>
+            <div className={styles.form}>
                 <input
                     type='text' 
-                    placeholder='Titulo'
+                    placeholder='Title'
                     name='title'
                     value={title}
                     onChange={handleOnChange}
                     ></input>
                 <textarea 
-                    placeholder='Descripcion'
+                    placeholder='Description'
                     name='description'
                     value={description}
                     onChange={handleOnChange}
                 ></textarea>
-                <br/>
-                <button>{
-                        toDoEdit ? 'Actualizar' : 'Agregar' 
-                    }
-                </button>            
-            </form>
+                <div className={styles.formButton}>
+                    <button onClick={handleSubmit}>
+                        <i className="fas fa-plus"></i>
+                    </button>  
+                    <button onClick={handleClear}>
+                        clear
+                    </button>          
+                </div>
+            </div>
             {
-                error ? (<div>{error}</div>) : null 
+                error ? (<div className={styles.error}>{error}</div>) : null 
             }
         </div>
     )

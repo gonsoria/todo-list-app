@@ -1,0 +1,48 @@
+.app{
+    position: absolute;
+    background-image: url('./assets/bkg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+}
+
+
+.titleContainer{
+    width: 100vw;
+    height: 70px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    color: white;
+    font-size: 1.5em;
+    background:rgba(0, 0, 0, 0.562) ;
+    padding: 3px;
+}
+
+.appContainer{
+    /* border-style: solid;
+    border-width: 1px;
+    border-color: black; */
+    position: relative;
+    width: 95vw;
+    height: calc(95vh - 70px);
+    margin: 2.5vh 2.5vw;
+    padding: 0 15px;
+    border-radius: 10px;
+    color: white;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.103);
+}
+
+
+@media screen and (min-width: 576px) {
+    .appContainer{
+        width: 80vw;
+        margin-left: 10vw ;
+    }
+}
+
+

@@ -1,24 +1,25 @@
 import React from 'react';
 import ToDo from './ToDo';
+import styles from '../styles/ToDoList.module.css'
 
 function ToDoList({ toDos, toDoDelete, toDoComplete, setEdit }) {
     return (
-        <div>
-            <h2>Tareas</h2>
+        <div className={styles.todoList}>
             {
-                toDos.length === 0 ? ( <h4>No hay tareas, agregar una.</h4> ) 
+                toDos.length === 0 ? ( <h4>
+                    There are no tasks, add one.</h4> ) 
                 :(
-                toDos.map(todo => 
-                <ToDo 
-                    key={todo.id}
-                    todo={todo}
-                    toDoDelete={toDoDelete}
-                    toDoComplete={toDoComplete}
-                    setEdit={setEdit}
-                />))
+                toDos.map(todo =>
+                <div  key={todo.id} className={styles.todoCard}>
+                    <ToDo                        
+                        todo={todo}
+                        toDoDelete={toDoDelete}
+                        toDoComplete={toDoComplete}
+                        setEdit={setEdit}
+                    />
+                    <hr/>
+                </div> ))
             }
-            <hr/>
-            
         </div>
     )
 }

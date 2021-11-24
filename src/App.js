@@ -1,6 +1,7 @@
-import React ,{ useState, useEffect } from 'react'
+import React ,{ useState } from 'react'
 import ToDoList from './components/ToDoList'
 import ToDoForm from './components/ToDoForm'
+import styles from './App.module.css'
 
 
 // const initialToDos =[
@@ -15,8 +16,7 @@ import ToDoForm from './components/ToDoForm'
 function App() {
     const [toDos, setToDos] = useState([])
     const [toDoEdit,setEdit] = useState(null)
-
-
+    
     const toDoDelete = (toDoId) => {
         const changedToDos = toDos.filter( todo => toDoId !== todo.id )
         setToDos(changedToDos)
@@ -27,6 +27,7 @@ function App() {
 
         setToDos(changedToDos)
     }
+
 
     const toDoAdd = (todo) => {
         const newToDo = {
@@ -48,23 +49,28 @@ function App() {
 
 
     return (
-        <div>
-            <h1>Lista de tareas.</h1>
-            <div>
-                <ToDoList
-                    toDos={toDos}
-                    toDoDelete={toDoDelete}
-                    toDoComplete={toDoComplete}
-                    setEdit={setEdit}
-                />
+        <div className={styles.app}>
+            <div className={styles.titleContainer}>
+                <h1>toDo list</h1>
             </div>
-            <div>
-                <ToDoForm 
-                    toDoAdd={toDoAdd}
-                    toDoEdit={toDoEdit}
-                    modifyToDo={modifyToDo}
-                    setEdit={setEdit}
-                />
+            <div className={styles.appContainer}>
+                <div className={styles.form}>
+                    <ToDoForm 
+                        toDos={toDos}
+                        toDoAdd={toDoAdd}
+                        toDoEdit={toDoEdit}
+                        modifyToDo={modifyToDo}
+                        setEdit={setEdit}
+                    />
+                </div>
+                <div className={styles.todoList}>
+                    <ToDoList
+                        toDos={toDos}
+                        toDoDelete={toDoDelete}
+                        toDoComplete={toDoComplete}
+                        setEdit={setEdit}
+                    />
+                </div>                 
             </div>
         </div>
     )
