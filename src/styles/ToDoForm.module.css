@@ -55,7 +55,8 @@
     color: white;
 }
 .formButton button:hover{
-    background: rgba(0, 0, 0, 0.562);
+    background: rgba(88, 87, 87, 0.562);
+    cursor: pointer;   
 }
 
 .error{
