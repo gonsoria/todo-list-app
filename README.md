@@ -10,7 +10,4 @@ All states managed with react, responsive design with css, icons from fontawesom
 VERCEL URL:
     https://todo-list-app-knu18tvkf-gonsoria.vercel.app/
 
-LINKEDIN:
-    https://www.linkedin.com/in/gonzalo-jorge-soria-720822202/
-
 Gonzalo Soria . 
